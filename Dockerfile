@@ -10,16 +10,14 @@ RUN groupadd -g 999 flairuser && \
 ENV SPRING_OUTPUT_ANSI_ENABLED=ALWAYS \
     JAVA_OPTS="" \
     JHIPSTER_SLEEP=0
-
-
-RUN chown -R flairuser:flairuser /app
-RUN chmod -R 755 /app
-
-USER flairuser
-
+    
 # Add entrypoint script
 ADD scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
+
+USER flairuser
+
+
 ENTRYPOINT ["entrypoint.sh"]
 
 
